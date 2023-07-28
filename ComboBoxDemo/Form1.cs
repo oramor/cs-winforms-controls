@@ -16,20 +16,21 @@ namespace ComboBoxDemo
         void Init()
         {
             var dt = new DataTable();
-            dt.Columns.Add("Id", typeof(int));
+            dt.Columns.Add("Id");
             dt.Columns.Add("Title", typeof(string));
             dt.Rows.Add(new object[] { 1, "Product 1" });
-            dt.Rows.Add(new object[] { 2, "Product 2" });
+            dt.Rows.Add(new object[] { "2", "Product 2" });
 
             comboBox1.ValueMember = "Id";
             comboBox1.DisplayMember = "Title";
 
             comboBox1.DataSource = dt;
 
-            /// Вначале присваиваем значение, которое существует в списке
-            /// подстановки
+            /// SelectedValue НЕ может принимать NULL
+            ///comboBox1.SelectedValue = null;
+            ///
             comboBox1.SelectedValue = 1;
-            comboBox1.DataSource = GetSourceTwo();
+            //comboBox1.DataSource = GetSourceTwo();
             //comboBox1.SelectedValue = 10;
             if (comboBox1.SelectedValue != null)
             {

@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComboBoxDemo", "ComboBoxDemo\ComboBoxDemo.csproj", "{A390E906-A5DA-428A-8A37-7931C0480680}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComboBoxDemo", "ComboBoxDemo\ComboBoxDemo.csproj", "{A390E906-A5DA-428A-8A37-7931C0480680}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextBoxAsync", "TextBoxAsync\TextBoxAsync.csproj", "{8300C289-9403-4428-8B95-483CA71EF099}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{A390E906-A5DA-428A-8A37-7931C0480680}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A390E906-A5DA-428A-8A37-7931C0480680}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A390E906-A5DA-428A-8A37-7931C0480680}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8300C289-9403-4428-8B95-483CA71EF099}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8300C289-9403-4428-8B95-483CA71EF099}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8300C289-9403-4428-8B95-483CA71EF099}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8300C289-9403-4428-8B95-483CA71EF099}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
