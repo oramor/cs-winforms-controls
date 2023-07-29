@@ -1,4 +1,6 @@
-﻿namespace TextBoxAsync
+﻿using System.ComponentModel;
+
+namespace TextBoxAsync
 {
     public partial class CustomTextBox : TextBox
     {
@@ -17,6 +19,8 @@
             {
                 _ctx = ctx;
 
+                ctx.DataLoadStatusChanged += DataContext_DataLoadStatusChanged;
+
                 if (ctx.IsDataLoaded)
                 {
                     BindValue();
@@ -25,10 +29,11 @@
                 {
                     SetLoading();
                 }
-
-                ctx.DataLoadStatusChanged += DataContext_DataLoadStatusChanged;
             }
         }
+
+        [Browsable(true), Category("Object properties"), DefaultValue("")]
+        public string BindingName { get; set; } = "";
 
         void BindValue()
         {
@@ -38,7 +43,7 @@
             void action()
             {
                 //TextChanged -= StringControl_TextChanged;
-                Text = _ctx.String1;
+                Text = _ctx[BindingName];
                 //TextChanged += StringControl_TextChanged;
             }
 
