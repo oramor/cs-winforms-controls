@@ -9,7 +9,7 @@ namespace TextBoxAsync
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var ctx = new ViewModel();
+            var ctx = new ViewModelAsync();
             var form = new Form2(ctx);
             form.Show();
         }

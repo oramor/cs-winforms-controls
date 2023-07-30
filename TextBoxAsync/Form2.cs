@@ -7,9 +7,10 @@
             InitializeComponent();
         }
 
-        internal Form2(ViewModel ctx)
+        internal Form2(ViewModelAsync ctx)
             : this()
         {
+            reloadButton.Command = ctx.ReloadCommand;
             DataContext = ctx;
         }
     }

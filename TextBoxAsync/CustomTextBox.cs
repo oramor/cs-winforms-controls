@@ -4,31 +4,25 @@ namespace TextBoxAsync
 {
     public partial class CustomTextBox : TextBox
     {
-        ViewModel? _ctx;
+        ViewModelAsync? _ctx;
 
         public CustomTextBox()
         {
             InitializeComponent();
         }
 
-        protected override void OnDataContextChanged(EventArgs e)
+        protected override async void OnDataContextChanged(EventArgs e)
         {
             base.OnDataContextChanged(e);
 
-            if (DataContext is ViewModel ctx)
+            if (DataContext is ViewModelAsync ctx)
             {
+                SetLoading();
+                await ctx.DataLoading;
                 _ctx = ctx;
-
-                ctx.DataLoadStatusChanged += DataContext_DataLoadStatusChanged;
-
-                if (ctx.IsDataLoaded)
-                {
-                    BindValue();
-                }
-                else
-                {
-                    SetLoading();
-                }
+                BindValue();
+                SetLoaded();
+                ctx.DataLoadStarted += DataContext_DataLoadStarted;
             }
         }
 
@@ -40,70 +34,36 @@ namespace TextBoxAsync
             if (_ctx == null)
                 return;
 
-            void action()
-            {
-                //TextChanged -= StringControl_TextChanged;
-                Text = _ctx[BindingName];
-                //TextChanged += StringControl_TextChanged;
-            }
-
-            if (InvokeRequired)
-            {
-                Invoke(() => action());
-            }
-            else
-            {
-                action();
-            }
+            Text = _ctx[BindingName];
         }
 
         void SetLoading()
         {
-            void action()
-            {
-                Enabled = false;
-            }
-
-            if (InvokeRequired)
-            {
-                Invoke(() => action());
-            }
-            else
-            {
-                action();
-            }
+            Enabled = false;
         }
 
         void SetLoaded()
         {
-            void action()
-            {
-                Enabled = true;
-            }
-
-            if (InvokeRequired)
-            {
-                Invoke(() => action());
-            }
-            else
-            {
-                action();
-            }
+            Enabled = true;
         }
 
-        void DataContext_DataLoadStatusChanged(object? sender, DataLoadStatusChangedEventArgs e)
+        async void DataContext_DataLoadStarted(object? sender, EventArgs e)
         {
-            //MessageBox.Show("!!!");
-
-            if (DataContext is ViewModel)
+            if (DataContext is ViewModelAsync ctx)
             {
-                switch (e.Status)
+                SetLoading();
+
+                var status = ctx.DataLoading.Status;
+                await ctx.DataLoading;
+
+                //if (ctx.DataLoading.) { }
+
+                //await Task.Delay(2000);
+
+                /// Обрабатываем результаты асинхронной загрузки: успех,
+                /// отмена или ошибка
+                switch (ctx.DataLoadStatus)
                 {
-                    case DataLoadStatusEnum.OnLoading:
-                        {
-                            SetLoading();
-                            break;
-                        }
                     case DataLoadStatusEnum.Loaded:
                         {
                             BindValue();
