@@ -53,6 +53,7 @@ namespace TextBoxAsync
             {
                 SetLoading();
 
+                // Убеждаемся, что задача завершена, либо ожидаем ее завершения
                 await ctx.DataLoading;
 
                 switch (ctx.DataLoadStatus)
