@@ -8,14 +8,13 @@ namespace TextBoxAsync
 
         internal ViewModelAsync()
         {
-            DataLoadStatus = DataLoadStatusEnum.NotLoaded;
             _dic.Add("Prop1", "Value1");
             _dic.Add("Prop2", "Value2");
             _dic.Add("Prop3", "Value3");
             _dic.Add("Prop4", "Value4");
 
+            DataLoadStatus = DataLoadStatusEnum.NotLoaded;
             ReloadCommand = new ViewModelAsyncReloadCommand(this);
-
             DataLoading = DataLoadAsync();
         }
 
@@ -25,7 +24,6 @@ namespace TextBoxAsync
         {
             try
             {
-                OnDataLoadStarted();
                 await Task.Delay(1000);
                 DataLoadStatus = DataLoadStatusEnum.Loaded;
             }
@@ -78,6 +76,7 @@ namespace TextBoxAsync
             public void Execute(object? parameter)
             {
                 _ctx.DataLoading = _ctx.DataLoadAsync();
+                _ctx.OnDataLoadStarted();
             }
         }
     }

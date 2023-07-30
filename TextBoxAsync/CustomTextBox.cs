@@ -53,15 +53,8 @@ namespace TextBoxAsync
             {
                 SetLoading();
 
-                var status = ctx.DataLoading.Status;
                 await ctx.DataLoading;
 
-                //if (ctx.DataLoading.) { }
-
-                //await Task.Delay(2000);
-
-                /// Обрабатываем результаты асинхронной загрузки: успех,
-                /// отмена или ошибка
                 switch (ctx.DataLoadStatus)
                 {
                     case DataLoadStatusEnum.Loaded:
