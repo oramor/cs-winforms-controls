@@ -4,7 +4,7 @@ namespace TextBoxAsync
 {
     internal class ViewModelAsync
     {
-        Dictionary<string, string> _dic = new();
+        readonly Dictionary<string, string> _dic = new();
 
         internal ViewModelAsync()
         {
