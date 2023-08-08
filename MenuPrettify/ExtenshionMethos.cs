@@ -18,7 +18,7 @@
                     continue;
 
                 //MessageBox.Show(shownItems.ToString());
-
+                    
                 if (lastItem == null && i is ToolStripSeparator)
                 {
                     /// Отключаем, если сепаратор оказался первым

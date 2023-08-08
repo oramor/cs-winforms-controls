@@ -12,9 +12,10 @@ namespace MenuPrettify
         {
             customContextMenuStrip.Items.Clear();
 
-            var unavailCommand = new GuiCommand("Item 1", () => true);
+            var cmd1 = new GuiCommand("Item 1", () => true);
+            var cmd2 = new GuiCommand("Item 4", () => true);
 
-            var item1 = new CustomToolStripMenuItem(unavailCommand) {
+            var item1 = new CustomToolStripMenuItem(cmd1) {
                 Name = "Item1"
             };
 
@@ -26,6 +27,10 @@ namespace MenuPrettify
                 Name = "Item3"
             };
 
+            var item4 = new CustomToolStripMenuItem(cmd2) {
+                Name = "Item4"
+            };
+
             customContextMenuStrip.Items.Add(new ToolStripSeparator());
             customContextMenuStrip.Items.Add(new ToolStripSeparator());
             customContextMenuStrip.Items.Add(new ToolStripSeparator());
@@ -35,6 +40,7 @@ namespace MenuPrettify
             customContextMenuStrip.Items.Add(new ToolStripSeparator());
             customContextMenuStrip.Items.Add(item3);
             customContextMenuStrip.Items.Add(new ToolStripSeparator());
+            customContextMenuStrip.Items.Add(item4);
         }
     }
 }
