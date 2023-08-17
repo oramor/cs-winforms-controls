@@ -69,7 +69,7 @@ namespace SmartRefControl
             set { _borderColor = value; Invalidate(); }
         }
 
-        public bool IsDropDown { get; set; }
+        //public bool IsDropDown { get; set; }
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -77,10 +77,10 @@ namespace SmartRefControl
 
             e.Graphics.Clear(BackColor);
 
-            if (!IsDropDown)
-            {
-                _host = this;
-            }
+            //if (!IsDropDown)
+            //{
+            //    _host = this;
+            //}
             Color bord = _host.BorderColor;
             if (VisualStyleInformation.IsEnabledByUser)
                 bord = VisualStyleInformation.TextControlBorder;

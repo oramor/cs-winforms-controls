@@ -34,7 +34,7 @@
             // smartRefControl1
             // 
             smartRefControl1.Host = smartRefControl1;
-            smartRefControl1.IsDropDown = false;
+            //smartRefControl1.IsDropDown = false;
             smartRefControl1.Location = new Point(93, 31);
             smartRefControl1.Name = "smartRefControl1";
             smartRefControl1.Size = new Size(100, 23);
